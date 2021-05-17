@@ -1,0 +1,27 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+
+// Стили для файла с примером HTML-фрагмента
+@import './example';
+.form-input{
+    min-width: 800px;
+    padding: 10px;
+    margin-bottom: 20px;
+    
+}
+.form-btn{
+    display: block;
+    min-width: 100px;
+    height: 50px;
+    background-color:palevioletred;
+    border-radius: 4px;
+    color: white;
+    
+
+   
+}
+body{
+    margin: 30px;
+}
