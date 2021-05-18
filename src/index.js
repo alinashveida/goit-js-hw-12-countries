@@ -4,26 +4,30 @@ import countriesList from './templates/countriesList.hbs'
 import API from './js/fetchCountries';
 import getRefs from './js/get-refs';
 
-// console.log(cardTemplate);
+const debounce = require('lodash.debounce');
+console.log(debounce);
 
  const refs = getRefs();
-refs.formInput.addEventListener('input', onInput);
+refs.formInput.addEventListener('input', debounce(() => {
+    onInput();
+  }, 500));
 
 function onInput(evt){
-    evt.preventDefault()
+    // evt.preventDefault()
     
     const inputValue = refs.formInput.value;
     console.log(inputValue)
 
     
     API.fetchCountries(inputValue)
-   .then(checkNumberOfCounthies)
+   .then(checkNumberOfCountries)
    .catch(onFetchError)
 //    .finally(() => inputValue.reset())
 }
 
 
 function onFetchError(error){
+    
     alert('Страна ненайдена')
 
 }
@@ -44,21 +48,33 @@ function renderCounthiesList(country){
      console.log(markUpList)
 }
 
-function checkNumberOfCounthies (countries){
+function checkNumberOfCountries (countries){
     if(countries.length < 10 && countries.length > 1){
+        clearMarkUp();
         renderCounthiesList(countries);
         console.log(countries);
         console.log('1')
     }
-
-    if(countries.length === 1){
+     else if (countries.length === 1){
+        clearMarkUp();
         renderCountryCard(countries);
         console.log('2')
-    }else{
+    }
+     else if(countries.length > 10){
+        clearMarkUp();
+         console.log('too')
+
+     }
+     else{
+        clearMarkUp();
         console.log('else')
     }
 
     
+}
+
+function clearMarkUp(){
+    refs.card.innerHTML = "";
 }
 
 
@@ -104,6 +120,7 @@ function checkNumberOfCounthies (countries){
 // import * as Confirm from "@pnotify/confirm";
 // import "@pnotify/confirm/dist/PNotifyConfirm.css";
 // console.log(notice)
+
 
 // function click() {
 //     info({

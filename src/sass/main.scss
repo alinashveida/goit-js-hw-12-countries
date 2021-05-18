@@ -20,11 +20,52 @@
 
 .form-input:focus{
     border: 2px solid #4c8d85;
+    margin-bottom: 35px;
 }
 
 body{
     background: #89b1a5;
     padding: 30px;
     padding-top: 50px;
+    text-align: center;
     
+}
+
+.name{
+    text-align: center;
+    font-size: 50px
+}
+
+.container{
+    border: 15px solid #4c8d85;
+    border-radius: 15px;
+    padding: 30px;
+    padding-top: 0px;
+    width: 70%;
+    text-align: left;
+    margin: auto;
+    
+
+}
+
+span{
+    font-size: 35px;
+    padding-right: 5px;
+}
+
+.capital,
+.population,
+.languages-list__item{
+    font-size: 25px;
+}
+
+.countries-list__item{
+    font-size: 35px;
+    margin: 5px;
+    text-align: left;
+}
+
+.card-info{
+    display: flex;
+    justify-content:space-around;
 }

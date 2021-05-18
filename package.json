@@ -27,6 +27,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "@pnotify/confirm": "^5.2.0"
+    "@pnotify/confirm": "^5.2.0",
+    "lodash.debounce": "^4.0.8"
   }
 }
