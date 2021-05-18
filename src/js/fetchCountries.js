@@ -1,6 +1,6 @@
 const BASE_URL = `https://restcountries.eu/rest/v2`
 
-function fetchCountry(country){
+function fetchCountries(country){
     const url = `${BASE_URL}/name/${country}`;
     
     return fetch(url).then(
@@ -9,4 +9,4 @@ function fetchCountry(country){
 })
 }
 
-export default {fetchCountry}
+export default {fetchCountries}

@@ -1,7 +1,7 @@
 import './sass/main.scss';
 import cardTemplate from './templates/card.hbs';
 import countriesList from './templates/countriesList.hbs'
-import API from './js/api-service';
+import API from './js/fetchCountries';
 import getRefs from './js/get-refs';
 
 // console.log(cardTemplate);
@@ -16,7 +16,7 @@ function onInput(evt){
     console.log(inputValue)
 
     
-    API.fetchCountry(inputValue)
+    API.fetchCountries(inputValue)
    .then(checkNumberOfCounthies)
    .catch(onFetchError)
 //    .finally(() => inputValue.reset())

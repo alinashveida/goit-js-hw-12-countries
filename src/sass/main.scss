@@ -7,21 +7,24 @@
 @import './example';
 .form-input{
     min-width: 800px;
+    height: 50px;
     padding: 10px;
     margin-bottom: 20px;
+    border: 2px solid #7BA7AB;
+    border-radius: 5px;
+    outline: none;
+    background: #F9F0DA;
+    color: black;
     
 }
-.form-btn{
-    display: block;
-    min-width: 100px;
-    height: 50px;
-    background-color:palevioletred;
-    border-radius: 4px;
-    color: white;
-    
 
-   
+.form-input:focus{
+    border: 2px solid #4c8d85;
 }
+
 body{
-    margin: 30px;
+    background: #89b1a5;
+    padding: 30px;
+    padding-top: 50px;
+    
 }
