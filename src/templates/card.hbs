@@ -4,10 +4,10 @@
     <h2 class="population">Population:{{population}}</h2>
     <h2 class="languages">Languages: </h2>
     <ul class="languages-list">
-        {{!-- {{#each languages}}
-        <li class="languages-list__item">{{this}}</li>
-        {{/each}} --}}
-         <li class="languages-list__item">{{languages}}</li>
+        {{#each languages}}
+        <li class="languages-list__item">{{name}}</li>
+        {{/each}}
+         
     </ul>
     <img class="img" src="{{flag}}" alt="">
 </div>

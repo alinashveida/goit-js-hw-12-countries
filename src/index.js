@@ -1,37 +1,89 @@
 import './sass/main.scss';
-import cardTemplate from './templates/card.hbs'
+import cardTemplate from './templates/card.hbs';
+import countriesList from './templates/countriesList.hbs'
+import API from './js/api-service';
+import getRefs from './js/get-refs';
 
 // console.log(cardTemplate);
-const refs ={
-    card: document.querySelector(".card"),
-    formInput: document.querySelector(".form-input"),
-    formBtn: document.querySelector(".form-btn")
-}
 
+ const refs = getRefs();
 refs.formInput.addEventListener('input', onInput);
 
-function onInput(){
-    console.log(refs.formInput.value)
+function onInput(evt){
+    evt.preventDefault()
+    
+    const inputValue = refs.formInput.value;
+    console.log(inputValue)
+
+    
+    API.fetchCountry(inputValue)
+   .then(checkNumberOfCounthies)
+   .catch(onFetchError)
+//    .finally(() => inputValue.reset())
+}
+
+
+function onFetchError(error){
+    alert('Страна ненайдена')
+
+}
+
+//------------------------------///////////////////////
+
+function renderCountryCard(country){
+    console.log(country)
+    const markUp = cardTemplate(country[0]);
+    console.log(markUp);
+    refs.card.innerHTML = markUp;
+
+}
+
+function renderCounthiesList(country){
+     const markUpList = countriesList(country);
+     refs.card.innerHTML = markUpList;
+     console.log(markUpList)
+}
+
+function checkNumberOfCounthies (countries){
+    if(countries.length < 10 && countries.length > 1){
+        renderCounthiesList(countries);
+        console.log(countries);
+        console.log('1')
+    }
+
+    if(countries.length === 1){
+        renderCountryCard(countries);
+        console.log('2')
+    }else{
+        console.log('else')
+    }
+
+    
 }
 
 
 
-fetchCountry(us)
-   .then(renderCountryCard)
-   .catch((error) => {console.log(console.error)})
+//---------------------------------------------------------------------
+// const BASE_URL = 'https://restcountries.eu/rest/v2/name';
 
-function fetchCountry(name){
-    fetch(`https://restcountries.eu/rest/v2/name/${name}`).then((response) =>{
-    return response.json()
-})
-}
+// const fetchCountry = country => fetch(`${BASE_URL}/${country}`).then(response => response.json());
 
 
 
-// fetchCountry();
+// function fetchCountry(country){
+//     fetch(`${BASE_URL}/${country}`).then((response) =>{
+//     return response.json()
+// })
+// }
 
-// function fetchCountry(){
-//     fetch('https://restcountries.eu/rest/v2/name/usa').then((response) =>{
+// fetchCountry(u).then(renderCountryCard).catch((error) => console.log(error))
+//--------------------------------------------
+
+
+
+// function fetchCountry(name){
+//     name = "usa"
+//     fetch(`https://restcountries.eu/rest/v2/name/${name}`).then((response) =>{
 //     return response.json()
 // })
 // .then(renderCountryCard)
@@ -39,14 +91,51 @@ function fetchCountry(name){
 //     console.log(error)
 // });
 // }
+// fetchCountry();
 
-function renderCountryCard(country){
-    const markUp = cardTemplate(country[0]);
-    console.log(markUp);
-    refs.card.innerHTML = markUp;
-    console.log(country[0].languages)
 
-}
+
+
+
+//------------------------------notificashca
+// import { info, notice } from "@pnotify/core";
+// import "@pnotify/core/dist/PNotify.css";
+// import "@pnotify/core/dist/BrightTheme.css";
+// import * as Confirm from "@pnotify/confirm";
+// import "@pnotify/confirm/dist/PNotifyConfirm.css";
+// console.log(notice)
+
+// function click() {
+//     info({
+//       title: "Button Clicked",
+//       text:
+//         "You have clicked the button. You may now complete the process of reading the notice.",
+//       modules: new Map([
+//         [
+//           Confirm,
+//           {
+//             confirm: true,
+//             buttons: [
+//               {
+//                 text: "Ok",
+//                 primary: true,
+//                 click: notice => {
+//                   notice.close();
+//                 }
+//               }
+//             ]
+//           }
+//         ]
+//       ])
+//     });
+//   }
+
+//   const a = document.querySelector('.form-btn');
+
+//   a.addEventListener('click', click)
+
+ 
+
 
 
 
