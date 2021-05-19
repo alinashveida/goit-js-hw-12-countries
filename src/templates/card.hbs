@@ -1,17 +1,34 @@
-<div class="container">
-    <h1 class="name">{{name}}</h1>
-    <div class="card-info">
+<div class='container'>
+  <h1 class='name'>
+    {{name}}
+  </h1>
+  <div class='card-info'>
     <div>
-        <h2 class="capital"><span>Capital:</span> {{capital}}</h2>
-        <h2 class="population"><span>Population:</span>{{population}}</h2>
-        <h2 class="languages"><span>Languages:</span> </h2>
-        <ul class="languages-list">
+      <h2 class='capital'>
+        <span>
+          Capital:
+        </span>
+        {{capital}}
+      </h2>
+      <h2 class='population'>
+        <span>
+          Population:
+        </span>{{population}}
+      </h2>
+      <h2 class='languages'>
+        <span>
+          Languages:
+        </span>
+      </h2>
+      <ul class='languages-list'>
         {{#each languages}}
-        <li class="languages-list__item">{{name}}</li>
-        {{/each}}   
-    </ul>
+          <li class='languages-list__item'>
+            {{name}}
+          </li>
+        {{/each}}
+      </ul>
     </div>
-    
-    <img class="img" src="{{flag}}" alt="" width="400px">
-    </div>
+
+    <img class='img' src="{{flag}}" alt='' width='400px' />
+  </div>
 </div>

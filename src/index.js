@@ -15,7 +15,7 @@ refs.formInput.addEventListener('input', debounce(() => {
     onInput();
   }, 500));
 
-function onInput(evt){З
+function onInput(evt){
     const inputValue = refs.formInput.value;
     console.log(inputValue)
 
